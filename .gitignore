@@ -9,7 +9,7 @@
 *.exe
 *.csv
 _*
-*.sln
+
 .vs
 .temp
 *.pro
