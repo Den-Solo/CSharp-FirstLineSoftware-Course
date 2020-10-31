@@ -192,21 +192,21 @@ namespace Lab1_PhoneBook
             {
                 Note note = notes[note_idx];
                 Console.WriteLine($"ID: {note_idx}");
-                Console.WriteLine($"surname: {note.surname}");
-                Console.WriteLine($"name: {note.name}");
+                Console.WriteLine($"surname: {note.surname.PadLeft(15)}");
+                Console.WriteLine($"name: {note.name.PadLeft(7)}");
                 if (!string.IsNullOrEmpty(note.lastname))
-                    Console.WriteLine($"lastname: {note.lastname}");
-                Console.WriteLine($"phone number:  {note.phoneNumber}");
+                    Console.WriteLine($"lastname: {note.lastname.PadLeft(10)}");
+                Console.WriteLine($"phone number:  {note.phoneNumber.PadLeft(10)}");
                 if (!string.IsNullOrEmpty(note.country))
-                    Console.WriteLine($"country: {note.country}");
+                    Console.WriteLine($"country: {note.country.PadLeft(10)}");
                 if (note.birthDate != default(DateTime))
-                    Console.WriteLine($"birthdate: {note.birthDate.ToString("dd.MM.yyyy")}");
+                    Console.WriteLine($"birthdate: {note.birthDate.ToString("dd.MM.yyyy").PadLeft(10)}");
                 if (!string.IsNullOrEmpty(note.organization))
-                    Console.WriteLine($"organization: {note.organization}");
+                    Console.WriteLine($"organization: {note.organization.PadLeft(10)}");
                 if (!string.IsNullOrEmpty(note.position))
-                    Console.WriteLine($"position: {note.position}");
+                    Console.WriteLine($"position: {note.position.PadLeft(10)}");
                 if (!string.IsNullOrEmpty(note.additionalNotes))
-                    Console.WriteLine($"additional notes: {note.additionalNotes}");
+                    Console.WriteLine($"additional notes: {note.additionalNotes.PadLeft(10)}");
                 Console.WriteLine();
             }
             else
@@ -248,7 +248,7 @@ namespace Lab1_PhoneBook
             Console.WriteLine("0 - Add new note");
             Console.WriteLine("1 - Edit existing note");
             Console.WriteLine("2 - Delete note");
-            Console.WriteLine("3 - Look through all notes full info");
+            Console.WriteLine("3 - Get one note full info");
             Console.WriteLine("4 - Look through all notes main info");
             Console.WriteLine("5 - Close app");
             Console.WriteLine("========================================================");

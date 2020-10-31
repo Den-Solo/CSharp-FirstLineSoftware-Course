@@ -63,7 +63,7 @@ namespace Lab1_PhoneBook
             Console.WriteLine("Enter ID to perform action");
             return AcquireCommandInRange(lowerBound, upperBound - 1);
         }
-        public int AcquireCommandInRange(int first, int last)
+        public static int AcquireCommandInRange(int first, int last)
         {
             int result;
             Console.Write("\n>>> ");
@@ -74,7 +74,7 @@ namespace Lab1_PhoneBook
             }
             return result;
         }
-        public string AcquirePhoneNumber()
+        public static string AcquirePhoneNumber()
         {
             Console.Write("Enter phone number (Only digits allowed)");
             string result;
@@ -88,14 +88,14 @@ namespace Lab1_PhoneBook
             }
             return result;
         }
-        public void AcquireSurnameAndName(out string surname, out string name)
+        public static void AcquireSurnameAndName(out string surname, out string name)
         {
             Console.WriteLine("Enter surname");
             surname = AcquireNotEmptyString();
             Console.WriteLine("Enter name");
             name = AcquireNotEmptyString();
         }
-        public string AcquireNotEmptyString()
+        public static string AcquireNotEmptyString()
         {
             Console.Write(">>> ");
             string result = Console.ReadLine();
@@ -107,12 +107,12 @@ namespace Lab1_PhoneBook
             }
             return result;
         }
-        public string AcquireAnyString()
+        public static string AcquireAnyString()
         {
             Console.Write(">>> ");
             return Console.ReadLine();
         }
-        public DateTime AcquireDate()
+        public static DateTime AcquireDate()
         {
             DateTime result;
             Console.WriteLine("Date format: dd.MM.YYYY");
@@ -126,7 +126,7 @@ namespace Lab1_PhoneBook
             }
             return result;
         }
-        public bool AcquireYesOrNo() /*true == yes*/
+        public static bool AcquireYesOrNo() /*true == yes*/
         {
             string input;
             while ((input = Console.ReadLine()).Length < 0 || !(input == "y" || input == "n"))
