@@ -283,27 +283,26 @@ namespace Lab1_PhoneBook
                     return;
                 }
             }
-            else
-            {
-                var note = notes[0].Item2;
-                Console.WriteLine("ID: ".PadRight(20) + notes[0].Item1.ToString().PadLeft(20));
-                Console.WriteLine("surname: ".PadRight(20) + note.surname.PadLeft(20));
-                Console.WriteLine("name: ".PadRight(20) + note.name.PadLeft(20));
-                if (!string.IsNullOrEmpty(note.lastname))
-                    Console.WriteLine("lastname: ".PadRight(20) + note.lastname.PadLeft(20));
-                Console.WriteLine("phone number: ".PadRight(20) + note.phoneNumber.PadLeft(20));
-                if (!string.IsNullOrEmpty(note.country))
-                    Console.WriteLine("country: ".PadRight(20) + note.country.PadLeft(20));
-                if (note.birthDate != default(DateTime))
-                    Console.WriteLine("birthdate: ".PadRight(20) + note.birthDate.ToString("dd.MM.yyyy").PadLeft(20));
-                if (!string.IsNullOrEmpty(note.organization))
-                    Console.WriteLine("organization: ".PadRight(20) +  note.organization.PadLeft(20));
-                if (!string.IsNullOrEmpty(note.position))
-                    Console.WriteLine("position: ".PadRight(20) + note.position.PadLeft(20));
-                if (!string.IsNullOrEmpty(note.additionalNotes))
-                    Console.WriteLine("additional notes: ".PadRight(20) + note.additionalNotes.PadLeft(20));
-                Console.WriteLine();
-            }
+        
+            var note = notes[0].Item2;
+            Console.WriteLine("ID: ".PadRight(20) + notes[0].Item1.ToString().PadLeft(20));
+            Console.WriteLine("surname: ".PadRight(20) + note.surname.PadLeft(20));
+            Console.WriteLine("name: ".PadRight(20) + note.name.PadLeft(20));
+            if (!string.IsNullOrEmpty(note.lastname))
+                Console.WriteLine("lastname: ".PadRight(20) + note.lastname.PadLeft(20));
+            Console.WriteLine("phone number: ".PadRight(20) + note.phoneNumber.PadLeft(20));
+            if (!string.IsNullOrEmpty(note.country))
+                Console.WriteLine("country: ".PadRight(20) + note.country.PadLeft(20));
+            if (note.birthDate != default(DateTime))
+                Console.WriteLine("birthdate: ".PadRight(20) + note.birthDate.ToString("dd.MM.yyyy").PadLeft(20));
+            if (!string.IsNullOrEmpty(note.organization))
+                Console.WriteLine("organization: ".PadRight(20) +  note.organization.PadLeft(20));
+            if (!string.IsNullOrEmpty(note.position))
+                Console.WriteLine("position: ".PadRight(20) + note.position.PadLeft(20));
+            if (!string.IsNullOrEmpty(note.additionalNotes))
+                Console.WriteLine("additional notes: ".PadRight(20) + note.additionalNotes.PadLeft(20));
+            Console.WriteLine();
+   
         }
 
 
