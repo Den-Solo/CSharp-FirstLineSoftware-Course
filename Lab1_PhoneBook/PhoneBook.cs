@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lab1_PhoneBook
 {
-    
+
     public partial class PhoneBook
     {
         public enum Result
@@ -25,14 +25,14 @@ namespace Lab1_PhoneBook
         private List<Note> notesSortedByName = new List<Note>();
         private Dictionary<string, Note> notesByPhoneNumber = new Dictionary<string, Note>();
 
-        private void _GetNoteIdx(string surname, string name,out int lowerBound, out int upperBound)
+        private void _GetNoteIdx(string surname, string name, out int lowerBound, out int upperBound)
         {
             //absolutely ineffective search on sorted array
             //but 
             //where is std::equal_range or std::lower_bound and std::upper_bound???
             lowerBound = notesSortedByName.FindIndex(note => note.name == name && note.surname == surname);
             upperBound = notesSortedByName.FindLastIndex(note => note.name == name && note.surname == surname) + 1;
-           // (lowerBound, upperBound) = EqualRange(notes, (x,y) => -1 == Note.Compare(surname,name,x));
+            // (lowerBound, upperBound) = EqualRange(notes, (x,y) => -1 == Note.Compare(surname,name,x));
         }
         private int _GetNoteIdx(string phoneNumber)
         {
@@ -48,7 +48,7 @@ namespace Lab1_PhoneBook
                 if (phoneNumber == notesSortedByName[lb].phoneNumber)
                 {
                     return lb;
-                } 
+                }
             }
             return -1;
         }
@@ -78,14 +78,14 @@ namespace Lab1_PhoneBook
             }
             for (; lb < ub; ++lb)
             {
-                result.Add(new Tuple<int,Note>(lb, notesSortedByName[lb]));
+                result.Add(new Tuple<int, Note>(lb, notesSortedByName[lb]));
             }
             return result;
         }
         public IReadOnlyList<Tuple<int, Note>> GetAllNotes()
         {
             List<Tuple<int, Note>> result = new List<Tuple<int, Note>>();
-            for (int i =0; i < notesSortedByName.Count; ++i)
+            for (int i = 0; i < notesSortedByName.Count; ++i)
             {
                 result.Add(new Tuple<int, Note>(i, notesSortedByName[i]));
             }
@@ -98,7 +98,7 @@ namespace Lab1_PhoneBook
             {
                 return new List<Tuple<int, Note>>();
             }
-            return new List<Tuple<int, Note>>() { new Tuple<int, Note>(idx, notesSortedByName[idx])}; //only one element as readonly
+            return new List<Tuple<int, Note>>() { new Tuple<int, Note>(idx, notesSortedByName[idx]) }; //only one element as readonly
         }
         public Note ExtractNote(int idx)
         {
@@ -111,7 +111,7 @@ namespace Lab1_PhoneBook
         }
         public Result InsertNote(Note note)
         {
-            if (!PhoneNumberFilter.IsMatch(note.phoneNumber) 
+            if (!PhoneNumberFilter.IsMatch(note.phoneNumber)
                 || notesByPhoneNumber.ContainsKey(note.phoneNumber))
             {
                 return Result.InvalidPhoneNumber;

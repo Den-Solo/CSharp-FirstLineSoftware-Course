@@ -7,16 +7,16 @@ namespace Lab1_PhoneBook
     public static class UserDialog
     {
         public const int ESCAPE_VAL = -1;
-        public const string lineSeparator = "========================================================";
+        public const string lineSeparator = "==========================================================";
 
         public static int AcquireCommandInRange(int first, int last, bool isEscapeAllowed)
         {
             int result = ESCAPE_VAL;
             DisplayReadyInput();
             while (!int.TryParse(Console.ReadLine(), out result)
-                || !(result >= first && result <= last || (isEscapeAllowed && result == ESCAPE_VAL)))                
+                || !(result >= first && result <= last || (isEscapeAllowed && result == ESCAPE_VAL)))
             {
-      
+
                 Console.WriteLine("Wrong input! Please, try again...");
                 DisplayReadyInput();
             }
@@ -38,7 +38,7 @@ namespace Lab1_PhoneBook
             string result = Console.ReadLine();
             while (string.IsNullOrWhiteSpace(result) || !format.IsMatch(result))
             {
-                Console.WriteLine("Bad format... Try again! [format: " + formatHelp  + "]");
+                Console.WriteLine("Bad format... Try again! [format: " + formatHelp + "]");
                 DisplayReadyInput();
                 result = Console.ReadLine();
             }

@@ -12,7 +12,7 @@ namespace Lab1_PhoneBook
 {
     public class RequestHandler
     {
-        private const int ESCAPE_VAL = UserDialog.ESCAPE_VAL; 
+        private const int ESCAPE_VAL = UserDialog.ESCAPE_VAL;
         private static CultureInfo cultInfo = new CultureInfo("ru-RU");
         private PhoneBook phoneBook;
 
@@ -26,10 +26,10 @@ namespace Lab1_PhoneBook
             "Find by surname and name", //0
             "Find by phone number"      //1
         };
-        public IReadOnlyList<Tuple<int,PhoneBook.Note>> AcquireNotesByNameOrPhone(bool isEscapeAllowed)
+        public IReadOnlyList<Tuple<int, PhoneBook.Note>> AcquireNotesByNameOrPhone(bool isEscapeAllowed)
         {
-            UserDialog.DisplayOptions(nameOrPhoneMenu,"Enter option", isEscapeAllowed ? "To escape" : null);
-            IReadOnlyList <Tuple<int, PhoneBook.Note>> notes = null;
+            UserDialog.DisplayOptions(nameOrPhoneMenu, "Enter option", isEscapeAllowed ? "To escape" : null);
+            IReadOnlyList<Tuple<int, PhoneBook.Note>> notes = null;
             switch (UserDialog.AcquireCommandInRange(0, 1, isEscapeAllowed))
             {
                 case ESCAPE_VAL:
@@ -63,7 +63,7 @@ namespace Lab1_PhoneBook
                 Console.Write($"or {ESCAPE_VAL} to escape");
             }
             Console.WriteLine();
-            int idx =  UserDialog.AcquireCommandInRange(notes.First().Item1, notes.Last().Item1,isEscapeAllowed);
+            int idx = UserDialog.AcquireCommandInRange(notes.First().Item1, notes.Last().Item1, isEscapeAllowed);
             if (idx == ESCAPE_VAL)
             {
                 return null;
@@ -115,13 +115,13 @@ namespace Lab1_PhoneBook
 
             if (notes != null && notes.Count == 1)
             {
-               
+
                 if (!UserDialog.AcquireYesOrNo("One Note with the same Name and Surname already exists\nDo you want to create new?"))
                 {
                     if (UserDialog.AcquireYesOrNo("Do you want to Edit existing?"))
                     {
                         EditNoteInfo(notes[0]);
-                    }   
+                    }
                     return;
                 }
             }
@@ -183,7 +183,7 @@ namespace Lab1_PhoneBook
                 "Set addtional notes",          //8
                 "Done!"                         //9
         };
-        private void EditNoteInfo(in Tuple<int,PhoneBook.Note> noteInfo)
+        private void EditNoteInfo(in Tuple<int, PhoneBook.Note> noteInfo)
         {
             PhoneBook.Note noteToEdit = phoneBook.ExtractNote(noteInfo.Item1);
             EditNote(noteToEdit); // assume we have provided all checks inside EditNote()
@@ -195,16 +195,17 @@ namespace Lab1_PhoneBook
         private void EditNote(PhoneBook.Note note)
         {
 
-            while (true) {
+            while (true)
+            {
                 UserDialog.DisplayOptions(editOptions, "Enter number to edit...", null);
 
-                switch (UserDialog.AcquireCommandInRange(0, editOptions.Length - 1,false))
+                switch (UserDialog.AcquireCommandInRange(0, editOptions.Length - 1, false))
                 {
                     case 0:
-                        note.surname = UserDialog.AcquireStringFormated("surname",PhoneBook.NameFilter,"letters only");
+                        note.surname = UserDialog.AcquireStringFormated("surname", PhoneBook.NameFilter, "letters only");
                         break;
                     case 1:
-                        note.name = UserDialog.AcquireStringFormated("name", PhoneBook.NameFilter, "letters only"); 
+                        note.name = UserDialog.AcquireStringFormated("name", PhoneBook.NameFilter, "letters only");
                         break;
                     case 2:
                         note.lastname = UserDialog.AcquireStringFormated("lastname", PhoneBook.NameFilter, "letters only");
@@ -283,7 +284,7 @@ namespace Lab1_PhoneBook
                     return;
                 }
             }
-        
+
             var note = notes[0].Item2;
             Console.WriteLine("ID: ".PadRight(20) + notes[0].Item1.ToString().PadLeft(20));
             Console.WriteLine("surname: ".PadRight(20) + note.surname.PadLeft(20));
@@ -293,16 +294,16 @@ namespace Lab1_PhoneBook
             Console.WriteLine("phone number: ".PadRight(20) + note.phoneNumber.PadLeft(20));
             if (!string.IsNullOrEmpty(note.country))
                 Console.WriteLine("country: ".PadRight(20) + note.country.PadLeft(20));
-            if (note.birthDate != default(DateTime))
+            if (note.birthDate != default)
                 Console.WriteLine("birthdate: ".PadRight(20) + note.birthDate.ToString("dd.MM.yyyy").PadLeft(20));
             if (!string.IsNullOrEmpty(note.organization))
-                Console.WriteLine("organization: ".PadRight(20) +  note.organization.PadLeft(20));
+                Console.WriteLine("organization: ".PadRight(20) + note.organization.PadLeft(20));
             if (!string.IsNullOrEmpty(note.position))
                 Console.WriteLine("position: ".PadRight(20) + note.position.PadLeft(20));
             if (!string.IsNullOrEmpty(note.additionalNotes))
                 Console.WriteLine("additional notes: ".PadRight(20) + note.additionalNotes.PadLeft(20));
             Console.WriteLine();
-   
+
         }
 
 
@@ -315,11 +316,14 @@ namespace Lab1_PhoneBook
             }
 
             Console.WriteLine("Displaying short info...\n");
-            Console.WriteLine($"ID      surname       name      phone number");
+            UserDialog.DisplayLineSeparator();
+            Console.WriteLine($"ID            surname            name         phone number");
+            UserDialog.DisplayLineSeparator();
             foreach (var info in notes)
             {
-                Console.WriteLine($"{info.Item1} {info.Item2.surname.PadLeft(13)} {info.Item2.name.PadLeft(10)} {info.Item2.phoneNumber.PadLeft(17)}");
+                Console.WriteLine($"{info.Item1} {info.Item2.surname.PadLeft(19)} {info.Item2.name.PadLeft(15)} {info.Item2.phoneNumber.PadLeft(20)}");
             }
+            UserDialog.DisplayLineSeparator();
         }
 
 
@@ -337,13 +341,13 @@ namespace Lab1_PhoneBook
                 "Get one note full info",                 //3
                 "Look through all notes main info",       //4
                 "Close app"                               //5
-        };                                                
-                                                          
+        };
+
         public bool ActionChooser()
         {
             UserDialog.DisplayOptions(mainMenuOptions, "Enter number to proceed...", null);
 
-            switch (UserDialog.AcquireCommandInRange(0,mainMenuOptions.Length - 1, false)) 
+            switch (UserDialog.AcquireCommandInRange(0, mainMenuOptions.Length - 1, false))
             {
                 case 0:
                     AddNote();
@@ -365,7 +369,7 @@ namespace Lab1_PhoneBook
             }
             return true;
         }
- 
+
 
     }
 
