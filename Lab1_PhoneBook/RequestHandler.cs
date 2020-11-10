@@ -174,7 +174,7 @@ namespace Lab1_PhoneBook
         private static string[] editOptions = new string[] {
                 "Set surname",                  //0
                 "Set name",                     //1
-                "Set lastname",                 //2
+                "Set middle name (patronymic)", //2
                 "Set birthDay",                 //3
                 "Set phone number",             //4
                 "Set country",                  //5
@@ -208,7 +208,7 @@ namespace Lab1_PhoneBook
                         note.name = UserDialog.AcquireStringFormated("name", PhoneBook.NameFilter, "letters only");
                         break;
                     case 2:
-                        note.lastname = UserDialog.AcquireStringFormated("lastname", PhoneBook.NameFilter, "letters only");
+                        note.middleName = UserDialog.AcquireStringFormated("middleName", PhoneBook.NameFilter, "letters only");
                         break;
                     case 3:
                         Console.WriteLine("Enter birthdate:");
@@ -289,8 +289,8 @@ namespace Lab1_PhoneBook
             Console.WriteLine("ID: ".PadRight(20) + notes[0].Item1.ToString().PadLeft(20));
             Console.WriteLine("surname: ".PadRight(20) + note.surname.PadLeft(20));
             Console.WriteLine("name: ".PadRight(20) + note.name.PadLeft(20));
-            if (!string.IsNullOrEmpty(note.lastname))
-                Console.WriteLine("lastname: ".PadRight(20) + note.lastname.PadLeft(20));
+            if (!string.IsNullOrEmpty(note.middleName))
+                Console.WriteLine("middle name: ".PadRight(20) + note.middleName.PadLeft(20));
             Console.WriteLine("phone number: ".PadRight(20) + note.phoneNumber.PadLeft(20));
             if (!string.IsNullOrEmpty(note.country))
                 Console.WriteLine("country: ".PadRight(20) + note.country.PadLeft(20));

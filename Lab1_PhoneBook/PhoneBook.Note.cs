@@ -8,7 +8,7 @@ namespace Lab1_PhoneBook
         {
             public string surname;
             public string name;
-            public string lastname;
+            public string middleName;
             public string phoneNumber;
             public string country;
             public DateTime birthDate;
@@ -26,7 +26,7 @@ namespace Lab1_PhoneBook
                 if (result != 0) return result;
                 result = string.Compare(this.name, otherNote.name);
                 if (result != 0) return result;
-                result = string.Compare(this.lastname, otherNote.lastname);
+                result = string.Compare(this.middleName, otherNote.middleName);
                 if (result != 0) return result;
                 result = string.Compare(this.phoneNumber, otherNote.phoneNumber);
                 if (result != 0) return result;
