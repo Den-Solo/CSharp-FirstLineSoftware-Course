@@ -85,7 +85,7 @@ namespace Lab1_PhoneBook
             {
                 pn = UserDialog.AcquireStringFormated(filler + "phone number",
                     PhoneBook.PhoneNumberFilter, "digits only");
-                if (!phoneBook.Exists(pn))
+                if (phoneBook.Exists(pn))
                 {
                     Console.WriteLine("This phone number already exists. Impossible to add");
                     filler = "another ";

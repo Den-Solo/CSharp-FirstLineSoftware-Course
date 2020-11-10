@@ -63,7 +63,7 @@ namespace Lab1_PhoneBook
 
         public bool Exists(string phoneNumber)
         {
-            return !notesByPhoneNumber.ContainsKey(phoneNumber);
+            return notesByPhoneNumber.ContainsKey(phoneNumber);
         }
 
 
