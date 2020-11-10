@@ -6,7 +6,7 @@ namespace Lab1_PhoneBook
 {
     public static class UserDialog
     {
-        public  const int ESCAPE_VAL = -1;
+        public const int ESCAPE_VAL = -1;
         public const string lineSeparator = "========================================================";
 
         public static int AcquireCommandInRange(int first, int last, bool isEscapeAllowed)
@@ -68,9 +68,11 @@ namespace Lab1_PhoneBook
         public static bool AcquireYesOrNo(string question) /*true == yes*/
         {
             Console.WriteLine(question + " [y/n]");
-            string input;
-            while ((input = Console.ReadLine()).Length < 0 || !(input == "y" || input == "n"))
+            DisplayReadyInput();
+            string input = Console.ReadLine();
+            while (string.IsNullOrEmpty(input) || !(input == "y" || input == "n"))
             {
+                input = Console.ReadLine();
                 Console.WriteLine("Wroooong... Try again!");
                 DisplayReadyInput();
             }

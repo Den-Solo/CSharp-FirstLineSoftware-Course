@@ -29,7 +29,7 @@ namespace Lab1_PhoneBook
         {
             //absolutely ineffective search on sorted array
             //but 
-            //where is std::equal_range or std::lower_bound and std::upper_bound??? I so miss c++
+            //where is std::equal_range or std::lower_bound and std::upper_bound???
             lowerBound = notesSortedByName.FindIndex(note => note.name == name && note.surname == surname);
             upperBound = notesSortedByName.FindLastIndex(note => note.name == name && note.surname == surname) + 1;
            // (lowerBound, upperBound) = EqualRange(notes, (x,y) => -1 == Note.Compare(surname,name,x));
